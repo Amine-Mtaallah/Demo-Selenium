@@ -10,14 +10,9 @@ Feature: Selectionner un produit et l acheter
     And Je me rederige vers la page d acceuil "Products"
     And Je clique sur Add to cart du Bike Light
 
-  @select-one-cart
-  Scenario: Selectionner un seule produit
-  
-    Then Le bouton Add to cart devient "Remove"
-    Then Le bouton Remove soit rouge "#e2231a"
 
   @verification-panier
-  Scenario: Verifier l ajout du produit au panier
+  Scenario: Selectionner un produit et Verifier l ajout du produit au panier
   
     Then Le bouton Add to cart devient "Remove"
     Then Le bouton Remove soit rouge "#e2231a"
@@ -39,3 +34,13 @@ Feature: Selectionner un produit et l acheter
     And Je me rederige vers la page Checkout:Complete!
     Then Je clique sur le bouton Back Home
     Then Je me rederige vers la page Products
+    
+    @supression-cart
+    Scenario: Verifier la suppression d un article
+  
+    And Je clique sur le bouton Remove de la page Your Cart
+    Then Le chiffre indiquant le nombre d article sera supprimer
+    Then La fenetre indiquat la quantite et la discription sera supprimer
+ 
+    
+     

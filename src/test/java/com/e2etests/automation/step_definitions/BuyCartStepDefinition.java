@@ -1,7 +1,6 @@
 package com.e2etests.automation.step_definitions;
 
 import java.time.Duration;
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -13,6 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import com.e2etests.automation.page_objects.BuyCartPageObject;
 import com.e2etests.automation.utils.ConfigFileReader;
 import com.e2etests.automation.utils.SetUp;
+import static org.junit.Assert.assertTrue;
 
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -22,7 +22,7 @@ public class BuyCartStepDefinition {
 	public BuyCartPageObject buyCartPageObject;
 	public ConfigFileReader configFileReader;
 	public WebDriverWait wait;
-
+	
 	public BuyCartStepDefinition() {
 		buyCartPageObject = new BuyCartPageObject();
 		configFileReader = new ConfigFileReader();
@@ -129,4 +129,18 @@ public class BuyCartStepDefinition {
 		Assert.assertEquals(obtenuBackHome, configFileReader.getProperties("urlProducts"));
 	}
 
+	@When("Je clique sur le bouton Remove de la page Your Cart")
+	public void jeCliqueSurLeBoutonRemoveDeLaPageYourCart() {
+	    buyCartPageObject.clickRemove();
+	}
+	
+	@Then("Le chiffre indiquant le nombre d article sera supprimer")
+	public void leChiffreIndiquantLeNombreDArticleSeraSupprimer() {
+		assertTrue(buyCartPageObject.isChiffreCartAbsent());
+        	}
+	
+	@Then("La fenetre indiquat la quantite et la discription sera supprimer")
+	public void laFenetreIndiquatLaQuantiteEtLaDiscriptionSeraSupprimer() {
+		assertTrue(buyCartPageObject.isElementFenetreAbsent());
+	}
 }

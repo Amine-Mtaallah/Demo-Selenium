@@ -2,6 +2,8 @@ package com.e2etests.automation.page_objects;
 
 import java.time.Duration;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
@@ -15,6 +17,7 @@ public class BuyCartPageObject {
 	
 	public ConfigFileReader configFileReader;
 	public WebDriverWait wait;
+	public Boolean B;
 
 	@FindBy(how=How.ID,using="add-to-cart-sauce-labs-bike-light")
 	public static WebElement btnaddcart;
@@ -47,9 +50,17 @@ public class BuyCartPageObject {
 	@FindBy (how=How.XPATH,using="//button[@id='back-to-products']")
 	public static WebElement btnBackHome;
 	
-	public static WebElement W;
+	@FindBy (how=How.ID,using="remove-sauce-labs-bike-light")
+	public static WebElement btnRemove;
 	
-	public BuyCartPageObject() {
+	@FindBy (how=How.XPATH,using="//span[@class='shopping_cart_badge']")
+	public static WebElement chiffreCart;
+	
+	@FindBy (how=How.XPATH,using="//div[@class='cart_item']")
+	public static WebElement elementFenetre;
+	
+		
+		public BuyCartPageObject() {
 		PageFactory.initElements(SetUp.getDriver(), this);
 		configFileReader=new ConfigFileReader();
 		wait=new WebDriverWait(SetUp.getDriver(), Duration.ofSeconds(10));
@@ -90,7 +101,26 @@ public class BuyCartPageObject {
 	
 	public void clickBackHome() {
 		btnBackHome.click();
-	
 	}
+	
+	public void clickRemove() {
+		btnRemove.click();
+	}
+	
+	 public boolean isChiffreCartAbsent() {
+	        try {
+	            return !chiffreCart.isDisplayed();
+	        } catch (NoSuchElementException e) {
+	            return true;
+	        }
+	    }
+	 public boolean isElementFenetreAbsent() {
+	        try {
+	            return !elementFenetre.isDisplayed();
+	        } catch (NoSuchElementException e) {
+	            return true;
+	        }
+	    }
+	
 }
 

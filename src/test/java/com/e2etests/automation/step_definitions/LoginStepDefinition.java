@@ -1,17 +1,14 @@
 package com.e2etests.automation.step_definitions;
 
 import java.time.Duration;
-
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
 import com.e2etests.automation.page_objects.LoginPageObject;
 import com.e2etests.automation.utils.ConfigFileReader;
 import com.e2etests.automation.utils.SetUp;
-
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -24,7 +21,6 @@ public class LoginStepDefinition {
 	public LoginStepDefinition() {
 		loginPageObject = new LoginPageObject();
 		configFilReader = new ConfigFileReader();
-	
 	}
 
 	@Given("Je me connecte a l application SWAGLABS")
@@ -74,13 +70,4 @@ public class LoginStepDefinition {
 	   String urlobtenu= loginPageObject.urlobtenu();
 	   Assert.assertEquals("https://www.saucedemo.com/", urlobtenu);
 	}
-
-
-
-
-
-
-
-	
-
 }

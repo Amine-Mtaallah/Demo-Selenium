@@ -43,7 +43,6 @@ public class LoginPageObject {
 	public LoginPageObject() { // creation du constructeur + initialitation du driver
 		PageFactory.initElements(SetUp.getDriver(), this);
 		configFileReader = new ConfigFileReader();
-
 	}
 
 	public void connectToApp() {
