@@ -37,7 +37,8 @@ Feature: Selectionner un produit et l acheter
     
     @supression-cart
     Scenario: Verifier la suppression d un article
-  
+    Then Je clique sur l icone du chariot
+    Then Je me rederige vers la page Your Cart
     And Je clique sur le bouton Remove de la page Your Cart
     Then Le chiffre indiquant le nombre d article sera supprimer
     Then La fenetre indiquat la quantite et la discription sera supprimer

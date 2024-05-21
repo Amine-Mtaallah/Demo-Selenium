@@ -10,7 +10,7 @@ import io.cucumber.junit.CucumberOptions.SnippetType;
 @CucumberOptions(
 		features= {"src/spec/features"},
 		plugin= {"pretty","html:target/cucumber-report.html"},
-		tags=("@confirmation-achat"),
+		tags=("@supression-cart"),
 		monochrome=true,
 		snippets=SnippetType.CAMELCASE
 		)

@@ -50,7 +50,7 @@ public class BuyCartPageObject {
 	@FindBy (how=How.XPATH,using="//button[@id='back-to-products']")
 	public static WebElement btnBackHome;
 	
-	@FindBy (how=How.ID,using="remove-sauce-labs-bike-light")
+	@FindBy (how=How.XPATH,using="//button[@class='btn btn_secondary btn_small cart_button']")
 	public static WebElement btnRemove;
 	
 	@FindBy (how=How.XPATH,using="//span[@class='shopping_cart_badge']")

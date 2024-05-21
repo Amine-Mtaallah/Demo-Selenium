@@ -51,10 +51,11 @@ public class BuyCartStepDefinition {
 	}
 
 	@Then("Un produit s ajout et le panier affiche le numero {string}")
-	public void unProduitSAjoutEtLePanierAfficheLeNumero(String string) {
+	public void unProduitSAjoutEtLePanierAfficheLeNumero(String string) throws InterruptedException {
 		String msgpanier = buyCartPageObject.panier.getText();
 		configFileReader.getProperties("numeroPanier");
 		Assert.assertEquals(msgpanier, "1");
+		Thread.sleep(2000);
 	}
 
 	@Then("Je clique sur l icone du chariot")
@@ -63,9 +64,10 @@ public class BuyCartStepDefinition {
 	}
 
 	@Then("Je me rederige vers la page Your Cart")
-	public void jeMeRederigeVersLaPageYourCart() {
+	public void jeMeRederigeVersLaPageYourCart() throws InterruptedException {
 		String obtenuYourCart = buyCartPageObject.url();
 		Assert.assertEquals(obtenuYourCart, configFileReader.getProperties("urlYourCart"));
+		Thread.sleep(2000);
 	}
 
 	@Then("Je clique sur le bouton Checkout")
@@ -90,8 +92,9 @@ public class BuyCartStepDefinition {
 	}
 
 	@Then("Je remplis le champ Zip Postal Code")
-	public void jeRemplisLeChampZipPostalCode() {
+	public void jeRemplisLeChampZipPostalCode() throws InterruptedException {
 		buyCartPageObject.saisieCodePostal();
+		Thread.sleep(2000);
 	}
 
 	@Then("Je clique sur continuer")
@@ -100,16 +103,19 @@ public class BuyCartStepDefinition {
 	}
 
 	@Then("Je me rederige vers la page Checkout:Overview")
-	public void jeMeRederigeVersLaPageCheckoutOverview() {
+	public void jeMeRederigeVersLaPageCheckoutOverview() throws InterruptedException {
 		String obtenuOverview = buyCartPageObject.url();
 		Assert.assertEquals(obtenuOverview, configFileReader.getProperties("urlOverview"));
+		Thread.sleep(3000);
 	}
 
 	@Then("Je clique sur le bouton Finish")
-	public void jeCliqueSurLeBoutonFinish() {
+	public void jeCliqueSurLeBoutonFinish() throws InterruptedException {
 		((JavascriptExecutor) SetUp.getDriver()).executeScript("window.scrollBy(0,600)", "");
+		Thread.sleep(3000);
 		WebElement W = wait.until(ExpectedConditions.visibilityOfElementLocated(By.xpath("//button[@id='finish']")));
 		W.click();
+		Thread.sleep(2000);
 	}
 
 	@Then("Je me rederige vers la page Checkout:Complete!")

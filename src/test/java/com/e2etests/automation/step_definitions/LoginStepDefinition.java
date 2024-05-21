@@ -34,8 +34,9 @@ public class LoginStepDefinition {
 	}
 
 	@When("Je saisis le password")
-	public void jeSaisisLePassword() {
+	public void jeSaisisLePassword() throws InterruptedException {
 		loginPageObject.password();
+		Thread.sleep(2000);
 	}
 
 	@When("Je clique sur le bouton login")
